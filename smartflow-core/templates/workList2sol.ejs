@@ -1,0 +1,80 @@
+pragma solidity ^0.4.25;
+// pragma solidity >=0.7.0 <0.9.0;
+
+import "AbstractWorklist";
+
+contract <%= nodeName(processId()) %>_AbstractWorlist {
+
+  <%  groupedIds = getWorkItemsGroupByParameters(true);
+      groupedIds.forEach(idGroup => {
+          var nodeId = idGroup[0]; -%>
+    function <%= nodeName(nodeId) %>_start(uint<%= getParameterType(nodeId, true, true, true) %>) external;
+  <% }) -%>
+
+  <%  groupedIds = getWorkItemsGroupByParameters(false);
+      groupedIds.forEach(idGroup => {
+          var nodeId = idGroup[0]; -%>
+    function <%= nodeName(nodeId) %>_complete(uint<%= getParameterType(nodeId, false, true, true) %>) external;
+  <% }) -%>
+
+}
+
+contract <%= nodeName(processId()) %>_Worklist is AbstractWorklist {
+
+    // Events with the information to include in the Log when a workitem is registered
+<%  groupedIds = getWorkItemsGroupByParameters(true);
+    groupedIds.forEach(idGroup => { -%>
+    event <%= nodeName(idGroup[0]) %>_Requested(uint<%= getParameterType(idGroup[0], true, true, true) %>);
+<% }) -%>
+
+<%  groupedIds = getWorkItemsGroupByParameters(true);
+    groupedIds.forEach(idGroup => {
+        var nodeId = idGroup[0]; -%>
+    function <%= nodeName(nodeId) %>_start(uint elementIndex<%= getParameters(nodeId, true, true, true) %>) external {
+        workitems.push(Workitem(elementIndex, msg.sender));
+        <%= nodeName(nodeId) %>_Requested(workitems.length - 1<%= getParameters(nodeId, true, false, true) %>);
+    }
+<% }) -%>
+
+
+
+
+<% var addressjs = getContracts(); 
+   var argsjs = getContractsArgs(); -%>
+
+
+<%  groupedIds = getWorkItemsGroupByParameters(false);
+    groupedIds.forEach(idGroup => {
+        var nodeId = idGroup[0]; -%>
+    string[] args_<%= nodeName(nodeId) %>;
+    // <%= nodeId %>
+        <% if(addressjs.get(nodeId)) { -%> 
+        <% var taskVerifyAddress = addressjs.get(nodeId); -%>
+        // <%= taskVerifyAddress %>
+        <% var paramsOfVerify = findParametersVerificationFunc(taskVerifyAddress.toString()); -%>
+        <% var argsOfVerify = findArgsVerificationFunc(taskVerifyAddress); -%>
+        <% var sigOfVerify = findSigVerificationFunc(taskVerifyAddress); -%>
+    // <%= paramsOfVerify %>
+    // <%= argsOfVerify %>
+    // <%= sigOfVerify %>
+        <% } -%>
+    function <%= nodeName(nodeId) %>(uint workitemId<%= getParameters(nodeId, false, true, true) %><% if(paramsOfVerify) { -%>,<%= paramsOfVerify %><% } -%>) external {
+      <%# findParametersVerificationFunc(0) %>
+      <% if(argsjs.get(nodeId)) { -%>
+        <% argsjs.get(nodeId).forEach(arg => { -%>
+          args_<%= nodeName(nodeId) %>.push("<%= arg %>");
+        <% }) -%>
+      <% } -%>
+      <% if(paramsOfVerify) { -%>
+        bool verified = <%= addressjs.get(nodeId) %>.call(abi.encodeWithSignature("verify(<%= sigOfVerify %>)"<% if(argsjs.get(nodeId)) { argsjs.get(nodeId).forEach((val,index)=>{ -%>
+          ,args_<%= nodeName(nodeId) %>[<%= index %>]<% if(index+1 !== argsjs.get(nodeId).length) { -%> <% } -%>
+        <% })} -%>,<%= argsOfVerify %> ));
+        require(verified,"not verified, please check your VC.");
+      <% } -%>
+        
+        <%= nodeName(processId()) %>_AbstractWorlist(workitems[workitemId].processInstanceAddr).<%= nodeName(nodeId) %>_complete(workitems[workitemId].elementIndex<%= getParameters(nodeId, false, false, true) %>);
+        workitems[workitemId].processInstanceAddr = address(0);
+    }
+<% }) -%>
+
+}

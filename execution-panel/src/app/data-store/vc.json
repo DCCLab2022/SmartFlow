@@ -1,0 +1,86 @@
+{
+  "types": {
+    "EIP712Domain": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "version",
+        "type": "string"
+      },
+      {
+        "name": "chainId",
+        "type": "uint256"
+      },
+      {
+        "name": "verifyingContract",
+        "type": "address"
+      }
+    ],
+    "Person": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "wallet",
+        "type": "address"
+      }
+    ],
+    "Credential": [
+      {
+        "name": "from",
+        "type": "Person"
+      },
+      {
+        "name": "to",
+        "type": "Person"
+      },
+      {
+        "name": "contents",
+        "type": "string"
+      }
+    ],
+    "Presentation": [
+      {
+        "name": "credential",
+        "type": "Credential"
+      },
+      {
+        "name": "driverlicense",
+        "type": "Credential"
+      }
+    ]
+  },
+  "primaryType": "Credential",
+  "domain": {
+    "name": "Verifiy Credential",
+    "version": "1",
+    "chainId": 4,
+    "verifyingContract": "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC"
+  },
+  "license": {
+    "from": {
+      "name": "Issuer1",
+      "wallet": "0xF5946f4Cc2Fa198a656044c30e46d832Cd67800d"
+    },
+    "to": {
+      "name": "Holder1",
+      "wallet": "0x3319242c2969F22CEE02E74dfC19A83E77683b77"
+    },
+    "contents": "Driver License"
+  },
+  "message_with_sig": {
+    "from": {
+      "name": "Issuer1",
+      "wallet": "0xF5946f4Cc2Fa198a656044c30e46d832Cd67800d"
+    },
+    "name_hol": "Holder1",
+    "wallet_hol": "0x3319242c2969F22CEE02E74dfC19A83E77683b77",
+    "data1": "Driver License",
+    "r_iss": "0x4dec959911a80e11a2c803c905ea56cf82065390ef653dfaf54029992942dbcc",
+    "s_iss": "0x31d31710ec17043ce592c3242845d657af45fbd3330748207c5aad310483274b",
+    "v_iss": 27
+  }
+}

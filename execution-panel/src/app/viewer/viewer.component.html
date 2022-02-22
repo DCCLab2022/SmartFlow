@@ -1,0 +1,10 @@
+<select class="btn btn-default navbar-btn" [(ngModel)]="url">
+   <option *ngFor="let x of activeContracts" [value]="x">{{x}}</option>
+</select>
+<button class="btn btn-default navbar-btn" (click)="loadModel()"> Display Model </button>
+<button class="btn btn-default navbar-btn" (click)="goToDashborad()"> Go to Dashboard </button>
+<!-- <a id="js-download-diagram" href title="download BPMN diagram">
+   BPMN diagram
+</a> -->
+<button class="btn btn-default navbar-btn" (click)="downloadsvg()"> download </button>
+<div id="canvas"></div>

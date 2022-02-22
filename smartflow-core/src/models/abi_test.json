@@ -1,0 +1,511 @@
+[
+	{
+		"inputs": [],
+		"stateMutability": "nonpayable",
+		"type": "constructor"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "addr",
+				"type": "address"
+			}
+		],
+		"name": "callanother",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name_hol",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "wallet_hol",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "data1",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v_iss",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r_iss",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s_iss",
+				"type": "bytes32"
+			}
+		],
+		"name": "checkissuer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name_hol",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "wallet_hol",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "data1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "data2",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v_iss",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r_iss",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s_iss",
+				"type": "bytes32"
+			}
+		],
+		"name": "checkissuer",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "version",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "chainId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "verifyingContract",
+						"type": "address"
+					}
+				],
+				"internalType": "struct BusinessContract.EIP712Domain",
+				"name": "eip712Domain",
+				"type": "tuple"
+			}
+		],
+		"name": "hash",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "pure",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "inputperson",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "wallet",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "inputpresentation",
+		"outputs": [
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "wallet",
+								"type": "address"
+							}
+						],
+						"internalType": "struct BusinessContract.Person",
+						"name": "from",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "wallet",
+								"type": "address"
+							}
+						],
+						"internalType": "struct BusinessContract.Person",
+						"name": "to",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "contents",
+						"type": "string"
+					}
+				],
+				"internalType": "struct BusinessContract.Credential",
+				"name": "credential",
+				"type": "tuple"
+			},
+			{
+				"components": [
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "wallet",
+								"type": "address"
+							}
+						],
+						"internalType": "struct BusinessContract.Person",
+						"name": "from",
+						"type": "tuple"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "name",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "wallet",
+								"type": "address"
+							}
+						],
+						"internalType": "struct BusinessContract.Person",
+						"name": "to",
+						"type": "tuple"
+					},
+					{
+						"internalType": "string",
+						"name": "contents",
+						"type": "string"
+					}
+				],
+				"internalType": "struct BusinessContract.Credential",
+				"name": "license",
+				"type": "tuple"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "inputstring",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "pubstr",
+		"outputs": [
+			{
+				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "result",
+		"outputs": [
+			{
+				"internalType": "bytes32",
+				"name": "",
+				"type": "bytes32"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"name": "returnAddr",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "success",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "str",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8[]",
+				"name": "intArr",
+				"type": "uint8[]"
+			}
+		],
+		"name": "testfunc",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "wallet",
+				"type": "address"
+			}
+		],
+		"name": "testperson",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "str",
+				"type": "string"
+			}
+		],
+		"name": "teststring",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"components": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "wallet",
+						"type": "address"
+					}
+				],
+				"internalType": "struct BusinessContract.Person",
+				"name": "person",
+				"type": "tuple"
+			}
+		],
+		"name": "teststruct2",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "name_hol",
+				"type": "string"
+			},
+			{
+				"internalType": "address",
+				"name": "wallet_hol",
+				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "data1",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "data2",
+				"type": "string"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v_iss",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r_iss",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s_iss",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "uint8",
+				"name": "v_hol",
+				"type": "uint8"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "r_hol",
+				"type": "bytes32"
+			},
+			{
+				"internalType": "bytes32",
+				"name": "s_hol",
+				"type": "bytes32"
+			}
+		],
+		"name": "testverify",
+		"outputs": [
+			{
+				"internalType": "bool",
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]
